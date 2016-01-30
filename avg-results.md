@@ -1,0 +1,16 @@
+results_for_2_nodes/get-param-cli
+0.62439996
+results_for_2_nodes/get-param
+0.07561665
+results_for_2_nodes/set-param-cli
+0.6988502
+results_for_2_nodes/set-param
+0.12795001
+results_for_8_nodes/get-param-cli
+0.62906677
+results_for_8_nodes/get-param
+0.105749995
+results_for_8_nodes/set-param-cli
+0.7857333
+results_for_8_nodes/set-param
+0.16324998
