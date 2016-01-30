@@ -4,7 +4,7 @@
 # And then another-one passes to clisp repl :)
 # and then output saves to another file
 
-avg_results="avg-results.md"
+avg_results="avg-results.txt"
 avg_lisp="avg.lisp"
 
 is_clisp=`which clisp`;
@@ -39,7 +39,7 @@ ls */* | grep -i filtered | while read filename
 
 clisp -q < $avg_lisp | sed -r "s/NIL//g" | tr -s '\n' > $avg_results
 
-cat $avg_results
+#cat $avg_results
 
 rm $avg_lisp
 
@@ -48,9 +48,11 @@ echo "Default comparisions:"
 
 for test_name in "get-param" "get-param-cli" "set-param" "set-param-cli"
 do
-    echo ""
-    echo $test_name
+    echo "" >> $avg_results
+    echo $test_name >> $avg_results
     difference_str=`cat $avg_results | grep -A 1 -E "$test_name($)" | grep -Eio "0.[0-9]+"| tr '\n' ' ' | sed -r "s/([0-9]) (0)/\1 - \2/g"`
     diff=`echo "$difference_str = "; echo "$difference_str" | bc | tr '\n' ' '`
-    echo $diff
+    echo $diff >> $avg_results
 done
+
+cat $avg_results

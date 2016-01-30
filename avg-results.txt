@@ -14,3 +14,15 @@ results_for_8_nodes/set-param-cli
 0.7857333
 results_for_8_nodes/set-param
 0.16324998
+
+get-param
+0.07561665 - 0.105749995 = -.030133345
+
+get-param-cli
+0.62439996 - 0.62906677 = -.00466681
+
+set-param
+0.12795001 - 0.16324998 = -.03529997
+
+set-param-cli
+0.6988502 - 0.7857333 = -.0868831
