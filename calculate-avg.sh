@@ -7,6 +7,13 @@
 avg_results="avg-results.md"
 avg_lisp="avg.lisp"
 
+is_clisp=`which clisp`;
+if [ $? -ne 0 ]
+then
+    echo "You should install `clisp` to calculate avg value :)"
+    exit
+fi   
+
 if [ -f $avg_results ]
 then
     rm $avg_results
@@ -35,3 +42,15 @@ clisp -q < $avg_lisp | sed -r "s/NIL//g" | tr -s '\n' > $avg_results
 cat $avg_results
 
 rm $avg_lisp
+
+echo ""
+echo "Default comparisions:"
+
+for test_name in "get-param" "get-param-cli" "set-param" "set-param-cli"
+do
+    echo ""
+    echo $test_name
+    difference_str=`cat $avg_results | grep -A 1 -E "$test_name($)" | grep -Eio "0.[0-9]+"| tr '\n' ' ' | sed -r "s/([0-9]) (0)/\1 - \2/g"`
+    diff=`echo "$difference_str = "; echo "$difference_str" | bc | tr '\n' ' '`
+    echo $diff
+done
