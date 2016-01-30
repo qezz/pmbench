@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Yes, this file generates another one.
-# And then it passes to clisp repl :)
+# And then another-one passes to clisp repl :)
+# and then output saves to another file
 
 avg_results="avg-results.md"
 avg_lisp="avg.lisp"
