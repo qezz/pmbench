@@ -33,7 +33,8 @@ ls */* | grep -i filtered | while read filename
                                 values=`cat $filename | sed -r "s/[0-7]\.([0-9]{3})/0\.\1/g" | tr '\n' ' '`
                                 test_type=`echo $filename | sed -r "s/-filtered//g"`
                                 echo "(format t \"$test_type\")" >> $avg_lisp
-                                echo "(/ (+ $values) 60.0)" >> $avg_lisp
+                                echo "(let ((lst '($values)))" >> $avg_lisp
+                                echo "  (float (/ (apply '+ lst) (length lst))))" >> $avg_lisp
                                 echo " " >> $avg_lisp
                             done
 

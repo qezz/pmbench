@@ -5,7 +5,7 @@ results_for_2_nodes/get-param
 results_for_2_nodes/set-param-cli
 0.6988502
 results_for_2_nodes/set-param
-0.12795001
+0.112897076
 results_for_8_nodes/get-param-cli
 0.62906677
 results_for_8_nodes/get-param
@@ -22,7 +22,7 @@ get-param-cli
 0.62439996 - 0.62906677 = -.00466681
 
 set-param
-0.12795001 - 0.16324998 = -.03529997
+0.112897076 - 0.16324998 = -.050352904
 
 set-param-cli
 0.6988502 - 0.7857333 = -.0868831
