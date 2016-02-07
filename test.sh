@@ -23,6 +23,8 @@ mkdir $output_folder
 ./test_get_param_cli.sh $output_folder
 ./test_set_param.sh $output_folder
 ./test_set_param_cli.sh $output_folder
+./test_set_diffparam.sh $output_folder
+./test_set_diffparam_cli.sh $output_folder
 
 for file in $( ls $output_folder ); do
     cat "${output_folder}/${file}" | grep -i real | grep -Eio "[0-9].[0-9]{3}" > "${output_folder}/${file}-filtered"
