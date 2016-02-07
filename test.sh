@@ -4,18 +4,32 @@
 # $2 sleep
 # $everythingelse command
 
-amount=$1
-shift;
-delay=$1
-shift;
+#amount=$1
+#shift;
+#delay=$1
+#shift;
 
-output="$1_$2_$3_$4_$5"
+result_str="results"
+date_str="`date +%Y%m%d_%H%M%S`" #year/mo/day_h/m/s
+output_folder="${result_str}_${date_str}"
 
-command=$@
+count_online_nodes="`crm_mon --as-xml | xpath '//node_attributes' 2>/dev/null | grep node\ name | sed -r \"s/.*<node name=\\"(.+)\\">/\1/g\" | wc -w`"
 
-for i in `seq 1 $amount`;
-do
+output_folder="${result_str}_for_${count_online_nodes}_nodes_${date_str}"
+
+mkdir $output_folder
+
+./test_get_param.sh $output_folder
+./test_get_param_cli.sh $output_folder
+./test_set_param.sh $output_folder
+./test_set_param_cli.sh $output_folder
+
+#command=$@
+
+#for i in `seq 1 4`;
+#do
  #   /usr/bin/time --format=%e 2>>./results/get-param $get_param
-    time ( sleep $delay; $command ) 2>>./results/$output
+ #   time ( sleep $delay; $command ) 2>>./results/$output
+    
 
-done
+#done

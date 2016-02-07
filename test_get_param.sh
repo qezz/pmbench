@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [[ $# -ne 0 ]]
+then
+    target_folder="$1"
+else
+    target_folder="results"
+fi
+
 function get_param {
     sleep 1; crm_resource --resource apache_server --get-parameter=test 1>/dev/null;
 }
@@ -8,7 +15,5 @@ function get_param {
 
 for i in `seq 1 60`;
 do
- #   /usr/bin/time --format=%e 2>>./results/get-param $get_param
-    time ( sleep 1; crm_resource --resource apache_server --get-parameter=test ) 2>>./results/get-param
-
+    time ( sleep 1; crm_resource --resource apache_server --get-parameter=test ) 2>>./$target_folder/get-param
 done
