@@ -17,4 +17,4 @@ done
 for i in `seq 1 60`
 do
     crm_resource --resource apache_server --delete-parameter=test$i
-donw
+done
