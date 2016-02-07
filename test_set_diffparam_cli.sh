@@ -9,7 +9,7 @@ fi
 
 for i in `seq 1 60`;
 do
-    time ( sleep 4; crm resource param apache_server set test$i $i) 2>>./$target_folder/set-param-cli
+    time ( sleep 4; crm resource param apache_server set test$i $i) 2>>./$target_folder/set-diffparam-cli
 done
 
 # cleanup params
