@@ -24,6 +24,10 @@ mkdir $output_folder
 ./test_set_param.sh $output_folder
 ./test_set_param_cli.sh $output_folder
 
+for file in $( ls $output_folder ); do
+    cat $file | grep -i real | grep -Eio "[0-9].[0-9]{3}" > "${output_folder}/${file}-filtered"
+done
+
 #command=$@
 
 #for i in `seq 1 4`;
